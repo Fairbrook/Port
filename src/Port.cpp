@@ -18,7 +18,7 @@ void Port::write(uint8_t value){
 	}
 
 	for(uint8_t i=0; i<8; i++){
-	    if((value & 0x80)==1)digitalWrite(this->_portPins[i], HIGH);
+	    if((value & 0x80)==0x80)digitalWrite(this->_portPins[i], HIGH);
 	    else if((value & 0x80)==0)digitalWrite(this->_portPins[i], LOW);
 	    value = value << 1;
 	}
@@ -33,7 +33,7 @@ uint8_t Port::read(){
 	}
 
 	for(uint8_t i=0; i<8; i++){
-	    result += _portPins[i] * aux;
+	    result += digitalRead(_portPins[i])* aux;
 	    aux = aux >> 1;
 	}
 	return result;
