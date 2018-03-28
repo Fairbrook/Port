@@ -5,10 +5,13 @@
 
 class Port{
 	public:
-		Port(uint8_t, uint8_t ,uint8_t ,uint8_t ,uint8_t ,uint8_t ,uint8_t ,uint8_t );
+		Port(uint8_t, uint8_t*);
 		void write(uint8_t);
 		uint8_t read();
-		uint8_t _portPins[8];
+
+	private:
+		uint8_t* _portPins;
+		uint8_t _num;
 };
 
 #endif
